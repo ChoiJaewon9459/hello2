@@ -1,6 +1,7 @@
-package com.example.hello.search;
+package com.example.hello.service.search;
 
 import com.example.hello.domain.search.TbSearchRepository;
+import com.example.hello.utils.NaverApiSearch;
 import com.example.hello.web.dto.SearchSaveRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,8 @@ public class SearchService {
     public Long save(SearchSaveRequestDto requestDto) {
         return tbSearchRepository.save(requestDto.toEntity()).getId();
     }
-    //public String news(SearchSaveRequestDto )
+    public String news(SearchSaveRequestDto requestDto){
+        return NaverApiSearch.newApi(requestDto.getSearch());
+    }
 
 }

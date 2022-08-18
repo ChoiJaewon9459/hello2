@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 public class SearchSaveRequestDto {
-
+    private int id;
     private String search;
 
     @Builder

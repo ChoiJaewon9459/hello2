@@ -19,4 +19,9 @@ public class IndexController {
 
         return "search";
     }
+    @GetMapping("/foodlist")
+    public String foodlist(){
+
+        return "foodlist";
+    }
 }

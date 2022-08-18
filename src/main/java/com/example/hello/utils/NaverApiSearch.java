@@ -11,8 +11,8 @@ import java.util.Map;
 
 public class NaverApiSearch {
     public static String newApi(String search) {
-        String clientId = ""; //애플리케이션 클라이언트 아이디값"
-        String clientSecret = ""; //애플리케이션 클라이언트 시크릿값"
+        String clientId = "i9aZHk224P8k_KiK_8ZN"; //애플리케이션 클라이언트 아이디값"
+        String clientSecret = "xwmmVccsi3"; //애플리케이션 클라이언트 시크릿값"
 
 
         String text = null;
