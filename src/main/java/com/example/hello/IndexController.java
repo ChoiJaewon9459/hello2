@@ -24,4 +24,9 @@ public class IndexController {
 
         return "foodlist";
     }
+    @GetMapping("/movie")
+    public String movie(){
+
+        return "movie";
+    }
 }

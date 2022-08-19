@@ -22,8 +22,12 @@ public class TbSearch {
     @Column(length = 500, nullable = false)
     private String search;
 
+    @Column(name = "cnt" )
+    private int cnt;
     @Builder
-    public TbSearch(String search){
+    public TbSearch(long id ,String search,int cnt){
+        this.id = id;
         this.search = search;
+        this.cnt = cnt;
     }
 }

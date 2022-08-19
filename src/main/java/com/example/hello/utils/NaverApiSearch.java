@@ -5,11 +5,49 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 public class NaverApiSearch {
+    public List<String> movie()  {
+        List<String> list = new ArrayList<>();
+        String URL = "https://movie.naver.com/movie/sdb/rank/rmovie.naver";
+        Document doc = null;
+
+        try {
+            doc = Jsoup.connect(URL).get();
+            Elements movieList = doc.select(".tit3 > a");
+            int i = 0;
+            for (Element e : movieList) {
+//                System.out.println(e.attr("title"));
+//                System.out.println(e.attr("href"));
+                String code = e.attr("href");
+                String [] codeArr = code.split("=");
+//                System.out.println("https://movie.naver.com/movie/bi/mi/photoViewPopup.naver?movieCode=" + codeArr[1]);
+                URL = "https://movie.naver.com/movie/bi/mi/photoViewPopup.naver?movieCode=" + codeArr[1];
+                doc = Jsoup.connect(URL).get();
+                Elements img = doc.select("#targetImage");
+
+                if (i >= 9) break;
+                list.add(img.attr("src"));
+                i++;
+            }
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return list;
+
+    }
+
+
     public static String newApi(String search) {
         String clientId = "i9aZHk224P8k_KiK_8ZN"; //애플리케이션 클라이언트 아이디값"
         String clientSecret = "xwmmVccsi3"; //애플리케이션 클라이언트 시크릿값"

@@ -19,6 +19,9 @@ public class SearchService {
     public Long save(SearchSaveRequestDto requestDto) {
         return tbSearchRepository.save(requestDto.toEntity()).getId();
     }
+    public SearchSaveRequestDto findAll(SearchSaveRequestDto requestDto) {
+        return tbSearchRepository.findAll(requestDto.toEntity());
+    }
     public String news(SearchSaveRequestDto requestDto){
         return NaverApiSearch.newApi(requestDto.getSearch());
     }
